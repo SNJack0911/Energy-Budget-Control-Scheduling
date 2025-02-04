@@ -142,8 +142,8 @@ Create a program in your favorite data visualization programming language (R, Ju
 # Session 2: Write your own scheduler
 Implement FCFS into a new Batsim scheduler with the following steps.
 
-1. Copy `src/libexec1by1.cpp` into `src/fcfs.cpp`.
-2. Modify `meson.build` to also compile a `fcfs` shared library, using `src/fcfs.cpp` instead of `src/libexec1by1.cpp`.
+1. Copy `src/exec1by1.cpp` into `src/fcfs.cpp`.
+2. Modify `meson.build` to also compile a `fcfs` shared library, using `src/fcfs.cpp` instead of `src/exec1by1.cpp`.
 3. Run `ninja -C build` and you should see your new scheduler.
 4. Modify `src/fcfs.cpp` so it runs a FCFS algorithm that can run jobs in parallel.
 
