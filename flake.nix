@@ -41,16 +41,10 @@
         batpkgs = batsim-flake.packages-debug.${system};
       in rec {
         packages = rec {
-          docker-container = pkgs.dockerTools.buildImage {
-            name = "batsim-getting-started";
+          docker-container = pkgs.dockerTools.streamNixShellImage {
+            name = "oarteam/batsim-getting-started";
             tag = "latest";
-            copyToRoot = devShells.default.buildInputs ++ [ pkgs.bashInteractive pkgs.coreutils pkgs.gcc ];
-            config = {
-              Cmd = [ "/bin/bash" ];
-              Env = [
-                "PKG_CONFIG_PATH=${batprotopkgs.batprotocol-cpp}/lib/pkgconfig:${intervalsetpkgs.intervalset}/lib/pkgconfig:${pkgs.nlohmann_json}/share/pkgconfig"
-              ];
-            };
+            drv = devShells.default;
           };
         };
         devShells = rec {

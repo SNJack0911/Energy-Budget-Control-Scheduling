@@ -10,7 +10,7 @@ git clone https://gitlab.com/mpoquet-courses/sched-with-batsim.git
 
 ## Software environment
 This section describes how to get into an environment where all the software is available for you to use.
-Two methods to get into such an environment are listed below, in order of preference.
+3 methods to get into such an environment are listed below, in order of preference.
 
 You can use the following commands to check if all the required softwares are available or not.
 
@@ -37,8 +37,14 @@ Steps to get into a Batsim environment.
    `nix develop --extra-substituters 'https://capack.cachix.org' --extra-trusted-public-keys 'capack.cachix.org-1:38D+QFk3JXvMYJuhSaZ+3Nm/Qh+bZJdCrdu4pkIh5BU='`
 4. Run this command to enter a new shell from which you should be able to run all softwares: `nix develop`
 
+### Method 2: Docker
+Additionally, a Docker container is provided.
 
-### Method 2: Build it yourself
+1. Install Docker if needed, and configure it if needed.
+2. Give read and write permissions to all users on the repository you have git cloned previously.
+3. Run the following command: `docker run -it --read-only --volume .:/outside batsim-getting-started:latest`
+
+### Method 3: Build it yourself
 Feeling extra adventurous? You can build everything yourself. This is not really documented but here some guidelines.
 
 - You should be able to get these from the package manager of any decent Linux distro: a C++ compilation toolchain, [Meson](https://mesonbuild.com/), [Ninja](https://ninja-build.org/), [pkg-config](https://en.wikipedia.org/wiki/Pkg-config), [Boost](https://en.wikipedia.org/wiki/Boost_(C%2B%2B_libraries)) and [nlohmann_json](https://github.com/nlohmann/json).
