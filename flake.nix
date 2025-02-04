@@ -43,7 +43,7 @@
         packages = rec {
           docker-container = pkgs.dockerTools.streamNixShellImage {
             name = "oarteam/batsim-getting-started";
-            tag = "latest";
+            tag = system;
             drv = devShells.default;
           };
         };

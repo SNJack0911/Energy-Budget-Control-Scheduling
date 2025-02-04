@@ -42,7 +42,9 @@ Additionally, a Docker container is provided.
 
 1. Install Docker if needed, and configure it if needed.
 2. Give read and write permissions to all users on the repository you have git cloned previously.
-3. Run the following command: `docker run -it --read-only --volume .:/outside batsim-getting-started:latest`
+3. Run the following command: `docker run -it --read-only --volume .:/outside oarteam/batsim-getting-started:ARCH`
+  - Replace ARCH by `x86_64-linux` if your CPU architecture is [x86_64](https://en.wikipedia.org/wiki/X86-64)
+  - Replace ARCH by `aarch64-linux` if your CPU architecture is [AArch64](https://en.wikipedia.org/wiki/AArch64)
 
 ### Method 3: Build it yourself
 Feeling extra adventurous? You can build everything yourself. This is not really documented but here some guidelines.
