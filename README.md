@@ -159,14 +159,14 @@ To test your algorithm, create a workload with at least 5 jobs that all have a `
 Make sure that your workload have some _holes_ if executed by FCFS, such that the holes are backfilled if executed by EASY.
 
 ## Performance comparison of EASY and FCFS
-Execute both FCFS and EASY on the `assets/more_jobs.json` workload, using the first 32 hosts of the `assets/cluster512.xml` SimGrid platform, using the `--mmax` Batsim command-line option. Note the _real_ time it takes Batsim to simulate this instance in both cases.
+Execute both FCFS and EASY on the `assets/more_jobs.json` workload, using the first 32 hosts of the `assets/cluster512.xml` SimGrid platform, thanks to the `--mmax` Batsim command-line option. Note the _real_ time it takes Batsim to simulate this instance in both cases.
 
-Write a script in your favorite data analysis programming language that open both Batsim `out.jobs` output files and that computes the following metrics.
+Write a script in your favorite data analysis programming language that open both Batsim `jobs.csv` output files and that computes the following metrics.
 - Makespan. Compute it as the maximum job completion time minus the minimum job submission time.
 - Mean waiting time. Compute the waiting time of each job as the difference between starting time and submission time, then average it over all jobs.
 - Mean turnaround time. The turnaround time is the time a job spent in the system (completion time minus submission time). Compute it for each job then average it over all jobs.
 
-Which algorithm performs the best on these metrics? Is this done on behalf of other criteria? (_e.g._, does one algorithm favors one kind of jobs more than the other?)
+Which algorithm performs the best on these metrics? Is this done on behalf of other criteria? Typically, does one algorithm favors one kind of jobs more than the other?
 
 # Session 3: TBD
 
