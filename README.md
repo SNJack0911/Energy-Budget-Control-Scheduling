@@ -142,6 +142,7 @@ Create a program in your favorite data visualization programming language (R, Ju
 
 
 # Session 2: Write your own scheduler
+## FCFS
 Implement FCFS into a new Batsim scheduler with the following steps.
 
 1. Copy `src/exec1by1.cpp` into `src/fcfs.cpp`.
@@ -149,12 +150,25 @@ Implement FCFS into a new Batsim scheduler with the following steps.
 3. Run `ninja -C build` and you should see your new scheduler.
 4. Modify `src/fcfs.cpp` so it runs a FCFS algorithm that can run jobs in parallel.
 
-Similarly, implement EDF into a new Batsim scheduler with similar steps as for FCFS.
+To test that your FCFS algorithm work as expected, create a SimGrid platform that contains several hosts, create a workload with at least 5 jobs such that you can see a difference in the decisions made by FCFS and the provided sequencer (`exec1by1`).
 
-To test that your algorithms work as expected, create a SimGrid platform that contains several hosts, create a workload with at least 5 jobs, and create a workload with jobs that requests several hosts.
+## EASY Backfilling
+Similarly, implement [EASY Backfilling](http://www.cs.umd.edu/~hollings/cs818z/s99/papers/feitelson.pdf) into a new Batsim scheduler with similar steps as for FCFS.
 
-# Session 3: Backfilling (N machines)
-TODO
+To test your algorithm, create a workload with at least 5 jobs that all have a `walltime` field.
+Make sure that your workload have some _holes_ if executed by FCFS, such that the holes are backfilled if executed by EASY.
+
+## Performance comparison of EASY and FCFS
+Execute both FCFS and EASY on the `assets/more_jobs.json` workload, using the first 32 hosts of the `assets/cluster512.xml` SimGrid platform, using the `--mmax` Batsim command-line option. Note the _real_ time it takes Batsim to simulate this instance in both cases.
+
+Write a script in your favorite data analysis programming language that open both Batsim `out.jobs` output files and that computes the following metrics.
+- Makespan. Compute it as the maximum job completion time minus the minimum job submission time.
+- Mean waiting time. Compute the waiting time of each job as the difference between starting time and submission time, then average it over all jobs.
+- Mean turnaround time. The turnaround time is the time a job spent in the system (completion time minus submission time). Compute it for each job then average it over all jobs.
+
+Which algorithm performs the best on these metrics? Is this done on behalf of other criteria? (_e.g._, does one algorithm favors one kind of jobs more than the other?)
+
+# Session 3: TBD
 
 # Acknowledgment
 This tutorial is heavily inspired from Mael Madon's work on https://gitlab.irit.fr/sepia-pub/mael/RM4ES-practicals.
