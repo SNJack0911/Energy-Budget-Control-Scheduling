@@ -168,7 +168,44 @@ Write a script in your favorite data analysis programming language that open bot
 
 Which algorithm performs the best on these metrics? Is this done on behalf of other criteria? Typically, does one algorithm favors one kind of jobs more than the other?
 
-# Session 3: TBD
+
+# Session 3: Walltime impact on Backfilling
+The goal of this session is to better understand how backfilling algorithms are impacted by the walltimes provided by the users.
+
+# Custom short workload
+First, write a workload of at least 10 jobs with delay profiles such that
+- all submission times are different, first job is submitted at time 0, last job is submitted near the schedule makespan / 2
+- all jobs use delay profiles with different length
+- jobs ask between 1 and 32 resources
+- FCFS and EASY should behave differently on it
+
+Generate several variants of your workload, such that
+- the walltime of each job is the profile duration + 10 s
+- the walltime of each job is the profile duration + 100 s
+- the walltime of each job is the profile duration + 1000 s
+- the walltime of each job is the profile duration + 10000 s
+
+Execute EASY on each workload, and execute FCFS on one workload. Compare the resulting schedules visually, using Gantt charts.
+
+What intuition the Gantt charts give you on the impact of walltime values on the performance of EASY backfilling?
+
+# Statistics time
+Now, instead of looking at Gantt charts, let us run bigger workloads and compute statistics on the resulting schedules :).
+
+Write a small script in your favorite prototyping language that opens a Batsim workload that contains jobs that use delay profiles, and that generates a new workload with the walltime of each job set to the duration of its profile + a given static delay.
+
+Use your script on the `assets/more_jobs.json` input workload with 10, 100, 1000 and 10000 s static delays to generate 4 different workloads.
+
+Execute EASY on each workload, and execute FCFS on one workload.
+
+Compute, for each simulation instance, the mean waiting time of all the jobs. What pattern do you see here?
+
+Visualize the distribution of the waiting time of all the jobs of each simulation instance.
+What do you see if you split this visualization by categories of job execution times? For example short jobs (<= 10 s), medium jobs (between 10 s and 100 s), and long jobs (> 100 s)?
+
+# Conservative backfilling
+Implement [Conservative Backfilling](http://www.cs.umd.edu/~hollings/cs818z/s99/papers/feitelson.pdf), and run a similar experiment as the one you just did with EASY but using Conservative Backfilling instead. Can you make the same conclusions on this algorithm?
+
 
 # Acknowledgment
 This tutorial is heavily inspired from Mael Madon's work on https://gitlab.irit.fr/sepia-pub/mael/RM4ES-practicals.
