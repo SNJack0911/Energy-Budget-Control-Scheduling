@@ -172,7 +172,7 @@ Which algorithm performs the best on these metrics? Is this done on behalf of ot
 # Session 3: Walltime impact on Backfilling
 The goal of this session is to better understand how backfilling algorithms are impacted by the walltimes provided by the users.
 
-# Custom short workload
+## Custom short workload
 First, write a workload of at least 10 jobs with delay profiles such that
 - all submission times are different, first job is submitted at time 0, last job is submitted near the schedule makespan / 2
 - all jobs use delay profiles with different length
@@ -189,7 +189,7 @@ Execute EASY on each workload, and execute FCFS on one workload. Compare the res
 
 What intuition the Gantt charts give you on the impact of walltime values on the performance of EASY backfilling?
 
-# Statistics time
+## Statistics time
 Now, instead of looking at Gantt charts, let us run bigger workloads and compute statistics on the resulting schedules :).
 
 Write a small script in your favorite prototyping language that opens a Batsim workload that contains jobs that use delay profiles, and that generates a new workload with the walltime of each job set to the duration of its profile + a given static delay.
@@ -203,9 +203,34 @@ Compute, for each simulation instance, the mean waiting time of all the jobs. Wh
 Visualize the distribution of the waiting time of all the jobs of each simulation instance.
 What do you see if you split this visualization by categories of job execution times? For example short jobs (<= 10 s), medium jobs (between 10 s and 100 s), and long jobs (> 100 s)?
 
-# Conservative backfilling
-Implement [Conservative Backfilling](http://www.cs.umd.edu/~hollings/cs818z/s99/papers/feitelson.pdf), and run a similar experiment as the one you just did with EASY but using Conservative Backfilling instead. Can you make the same conclusions on this algorithm?
+# Projects
+Projects are to be carried out in groups of 3. Members of each project should do the following.
+- Read and understand scheduling algorithms described in a research paper.
+- Select scheduling algorithms from the paper and implement them in Batsim (batprotocol branch).
+- Do a simple comparison of the implemented algorithms (or variants of the algorithms), using your own input files (workloads and platforms).
+  The comparaison should be similar to the one used in the experimental section of the paper, but with much less input workloads and much smaller workloads/platforms.
 
+Constraint: each student should implement at least one algorithm.
+
+The project will be evaluated from two outputs from each group.
+- A public git repository that contains your implementations of the algorithms, your code to compare the algorithms on some workloads/platforms, and a small documentation on how to compile and run everything.
+- A group defense where you'll present the selected algorithms, how you implemented them, how you compared them and the results of your comparison.
+
+## Topic 1: Job Reordering in EASY Backfilling
+- Base article: Tuning EASY-Backfilling Queues. J Lelong, V Reis, D Trystram.
+  https://hal.science/hal-01522459
+
+## Topic 2: Conservative Backfilling
+- Base article: Utilization and Predictability in Scheduling the IBM SP2 with Backfilling. D Feitelson, A Weil.
+  http://www.cs.umd.edu/~hollings/cs818z/s99/papers/feitelson.pdf
+
+## Topic 3: Backfilling under an Energy Budget
+- Base article: Towards Energy Budget Control in HPC. PF Dutot, Y Georgiou, D Glesser, L Lefèvre, M Poquet, I Raïs.
+  https://hal.science/hal-01533417v1/file/towards_energy_budget_control_in_hpc.pdf
+
+## Topic 4: Contiguity and Locality Constraints in Backfilling
+- Base article : Fernando Mendonça's PhD manuscript, Chapters 4 and 5.
+  https://theses.hal.science/tel-01681424v2/file/MENDONCA_2017_archivage.pdf
 
 # Acknowledgment
 This tutorial is heavily inspired from Mael Madon's work on https://gitlab.irit.fr/sepia-pub/mael/RM4ES-practicals.
