@@ -204,13 +204,14 @@ Visualize the distribution of the waiting time of all the jobs of each simulatio
 What do you see if you split this visualization by categories of job execution times? For example short jobs (<= 10 s), medium jobs (between 10 s and 100 s), and long jobs (> 100 s)?
 
 # Projects
-Projects are to be carried out in groups of 3. Members of each project should do the following.
+Projects are to be carried out in groups. Members of each project should do the following.
 - Read and understand scheduling algorithms described in a research paper.
 - Select scheduling algorithms from the paper and implement them in Batsim (batprotocol branch).
 - Do a simple comparison of the implemented algorithms (or variants of the algorithms), using your own input files (workloads and platforms).
   The comparaison should be similar to the one used in the experimental section of the paper, but with much less input workloads and much smaller workloads/platforms.
 
-Constraint: each student should implement at least one algorithm.
+Each **student** is responsible for implementing 1 or more algorithms.
+Each **group** is responsible for comparing the different algorithms on the same inputs, using the same metrics computed from the simulation outputs.
 
 The project will be evaluated from two outputs from each group.
 - A public git repository that contains your implementations of the algorithms, your code to compare the algorithms on some workloads/platforms, and a small documentation on how to compile and run everything.
@@ -218,19 +219,40 @@ The project will be evaluated from two outputs from each group.
 
 ## Topic 1: Job Reordering in EASY Backfilling
 - Base article: Tuning EASY-Backfilling Queues. J Lelong, V Reis, D Trystram.
-  https://hal.science/hal-01522459
+  https://hal.science/hal-01522459/document
+- Expected algorithms:
+  - EASY with FCFS reordering (default EASY policy)
+  - EASY with LCFS reordering
+  - EASY with LPF reordering
+  - EASY with SPJ reordering
+  - EASY with LQF reordering
+  - EASY with SQJ reordering
 
 ## Topic 2: Conservative Backfilling
 - Base article: Utilization and Predictability in Scheduling the IBM SP2 with Backfilling. D Feitelson, A Weil.
   http://www.cs.umd.edu/~hollings/cs818z/s99/papers/feitelson.pdf
+- Expected algorithms:
+  - Conservative Backfilling, `do nothing` option
+  - Conservative Backfilling, `initiate a new round of backfilling` option
+  - Conservative Backfilling, `retain the original schedule, but compress it` option
 
 ## Topic 3: Backfilling under an Energy Budget
 - Base article: Towards Energy Budget Control in HPC. PF Dutot, Y Georgiou, D Glesser, L Lefèvre, M Poquet, I Raïs.
   https://hal.science/hal-01533417v1/file/towards_energy_budget_control_in_hpc.pdf
+- Expected algorithms:
+  - `energyBud_IDLE`
+  - `PC_IDLE`
+  - `reducePC_IDLE`
 
 ## Topic 4: Contiguity and Locality Constraints in Backfilling
 - Base article : Fernando Mendonça's PhD manuscript, Chapters 4 and 5.
   https://theses.hal.science/tel-01681424v2/file/MENDONCA_2017_archivage.pdf
+- Expected algorithms:
+  - `Basic Backfilling (Algorithm 2)`
+  - `Backfilling with best effort contiguity (Algorithm 3)`
+  - `Backfilling with best effort locality (Algorithm 4)`
+  - `Backfilling with forced contiguity`
+  - `Backfilling with forced locality`
 
 # Acknowledgment
 This tutorial is heavily inspired from Mael Madon's work on https://gitlab.irit.fr/sepia-pub/mael/RM4ES-practicals.
