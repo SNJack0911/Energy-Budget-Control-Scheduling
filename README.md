@@ -206,16 +206,17 @@ What do you see if you split this visualization by categories of job execution t
 # Projects
 Projects are to be carried out in groups. Members of each project should do the following.
 - Read and understand scheduling algorithms described in a research paper.
-- Select scheduling algorithms from the paper and implement them in Batsim (batprotocol branch).
+- Implement in Batsim (batprotocol branch) algorithms from the paper.
 - Do a simple comparison of the implemented algorithms (or variants of the algorithms), using your own input files (workloads and platforms).
   The comparaison should be similar to the one used in the experimental section of the paper, but with much less input workloads and much smaller workloads/platforms.
+  You can typically see it as a test rather than a scientific evaluation with this question: Do the conclusions of the article hold on your small set of inputs or not?
 
 Each **student** is responsible for implementing 1 or more algorithms.
 Each **group** is responsible for comparing the different algorithms on the same inputs, using the same metrics computed from the simulation outputs.
 
 The project will be evaluated from two outputs from each group.
 - A public git repository that contains your implementations of the algorithms, your code to compare the algorithms on some workloads/platforms, and a small documentation on how to compile and run everything.
-- A group defense where you'll present the selected algorithms, how you implemented them, how you compared them and the results of your comparison.
+- A group defense where you'll quickly present the algorithms, how the algorithms have been implemented, who has implemented what, how you have compared the algorithms, and what are the results of your comparison.
 
 ## Topic 1: Job Reordering in EASY Backfilling
 - Base article: Tuning EASY-Backfilling Queues. J Lelong, V Reis, D Trystram.
