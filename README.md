@@ -255,5 +255,13 @@ The project will be evaluated from two outputs from each group.
   - `Backfilling with forced contiguity`
   - `Backfilling with forced locality`
 
+## Topic 5: Nonlinear sorting order
+- Base article: Obtaining Dynamic Scheduling Policies with Simulation and Machine Learning. D Carastan-Santos, R Y De Camargo
+  https://hal.science/hal-01618940v1
+- Expected algorithms:
+  - F1, F2, F3, F4
+  - Basics (FCFS, SPT...)
+- Expected evaluation section: subpart of 4.3 (Figure 9)
+
 # Acknowledgment
 This tutorial is heavily inspired from Mael Madon's work on https://gitlab.irit.fr/sepia-pub/mael/RM4ES-practicals.
