@@ -9,8 +9,6 @@ Evaluated on the SDSC Blue Horizon trace (512 hosts) across 10 weekly workloads 
 
 ## Build
 
-Requires a nix shell (`nix develop`) or a manual install of `batprotocol-cpp`, `intervalset`, `nlohmann_json`, Meson, and Ninja.
-
 ```sh
 meson setup build
 ninja -C build
@@ -86,7 +84,7 @@ No joule counter — purely an instantaneous check.
 ### energyBud
 
 Maintains a joule counter `C_ea` accruing at `B / (t_e − t_s)` J/s.
-Jobs are pre-charged at launch: `E_job = m_j × (P̃_comp − P̃_idle) × wall_j`.
+Jobs are pre-charged at launch: `E_job = m_j × (P_comp − P_idle) × wall_j`.
 Every 600 s a monitoring correction refunds the accumulated overcharge (estimated minus actual power).
 Backfill temporarily reserves `E_job(firstJob)` in `C_ea` before scheduling smaller jobs.
 
@@ -100,7 +98,7 @@ A backfill job passes if its average power demand fits within this reduced rate.
 
 Each algorithm has two variants:
 
-- **IDLE** — idle hosts remain on at `P̃_idle`
+- **IDLE** — idle hosts remain on at `P_idle`
 - **SHUTDOWN** — idle hosts are switched off to `P_off` after each scheduling pass and woken on demand. The energy saved is recaptured into `C_ea` via the monitoring correction, allowing more jobs to launch.
 
 ---
