@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+  <zone id="AS0" routing="Full">
+    <cluster
+      id="A" prefix="a" suffix="" radical="0-511"
+      speed="1Gf, 0.001Gf"
+      bw="1GBps" lat="5us"
+      bb_bw="3GBps" bb_lat="3us">
+      <!-- Energy model (Table I, Dutot 2017):
+           pstate 0 — active: 95W idle → 190.74W full compute
+           pstate 1 — sleep:  9.75W at any load
+           wattage_off — SimGrid host-off state: 9.75W -->
+      <prop id="wattage_per_state" value="95.0:95.0:190.74, 9.75:9.75:9.75" />
+      <prop id="wattage_off" value="9.75" />
+    </cluster>
+
+    <cluster
+      id="M" prefix="m" suffix="" radical="0-0"
+      speed="1Gf, 0.001Gf" bw="1GBps" lat="5us"
+      bb_bw="3GBps" bb_lat="3us"
+    >
+      <prop id="role" value="master" />
+      <prop id="wattage_per_state" value="95.0:95.0:190.74, 9.75:9.75:9.75" />
+      <prop id="wattage_off" value="9.75" />
+    </cluster>
+
+    <link id="backbone" bandwidth="5GBps" latency="2us" />
+
+    <zoneRoute src="A" dst="M" gw_src="aA_router" gw_dst="mM_router">
+      <link_ctn id="backbone" />
+    </zoneRoute>
+  </zone>
+</platform>
