@@ -1,6 +1,5 @@
 build
 result*
 .vscode
-*.pdf
 .venv
 out/
